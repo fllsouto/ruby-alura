@@ -48,8 +48,9 @@ def nao_quer_jogar?
   nao_quer_jogar.upcase != "S" 
 end
 
-def cabecalho_de_tentativas chutes, erros
+def cabecalho_de_tentativas chutes, erros, mascara
   puts "\n"*4
+  puts "Palavra Secreta: #{mascara}"
   puts "Erros até agora: #{erros}"
   puts "Entre com uma letra ou uma palavra"
 end
