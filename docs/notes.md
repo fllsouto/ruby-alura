@@ -1,4 +1,6 @@
-## Início
+## Resumo
+
+## Ruby I
 
 ###Early Return
 É uma boa prática para viabilizar o entendimento de quais condições a função trata.
@@ -23,3 +25,6 @@ Encapsular um método consiste em extrair o comportamento de um trecho de códig
 
 ###Método
 Uma função definida dentro de um escopo específico (classe) é chamado de método.
+
+## Ruby II
+
