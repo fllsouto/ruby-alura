@@ -1,10 +1,21 @@
 #encoding: utf-8
 
 require_relative 'ui'
+require_relative 'rank'
 
 
 
-# Methods that deals with game running, business logic and etc.... 
+# Methods that deals with game running, business logic and etc....
+
+def escolhe_palavra_secreta
+  avisa_escolhendo_palavra
+  texto = File.read("dicionario.txt")
+  todas_as_palavras = texto.split "\n"
+  numero_da_palavra = rand(todas_as_palavras.size)
+  palavra_secreta = todas_as_palavras[numero_da_palavra].downcase
+  avisa_palavra_escolhida palavra_secreta
+  palavra_secreta
+end
 
 def palavra_mascarada chutes, palavra_secreta
   mascara = ""
@@ -47,7 +58,7 @@ def joga nome
     if chutou_uma_letra
       total_encontrada = palavra_secreta.count chute[0]
       if total_encontrada == 0
-        avisa_letra_nao_encontrado
+        avisa_letra_nao_encontrada
         erros += 1
       else
         avisa_letra_encontrada total_encontrada
@@ -67,14 +78,24 @@ def joga nome
   end
 
   avisa_pontos pontos_ate_agora
+  pontos_ate_agora
 end
 
 def jogo_da_forca
 
   nome = da_boas_vindas
+  pontos_totais = 0
+
+  avisa_campeao_atual le_rank
 
   loop do
-    joga nome
+    pontos_totais += joga nome
+    avisa_pontos_totais pontos_totais
+    
+    if le_rank[1].to_i < pontos_totais
+      salva_rank nome, pontos_totais
+    end
+
     break if nao_quer_jogar?
   end
 end

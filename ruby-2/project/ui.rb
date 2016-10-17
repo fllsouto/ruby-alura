@@ -1,6 +1,10 @@
 #encoding: utf-8
 
 # Method to interact with the user (I/O)
+def avisa_campeao_atual conteudo
+  puts "O campeado atual é #{conteudo[0]} com um total de #{conteudo[1]} pontos"
+end
+
 def avisa_chute_efetuado(chutes)
   puts "Chutes até agora: #{chutes}"
 end
@@ -25,6 +29,9 @@ def avisa_pontos pontos_ate_agora
   puts "Você ganhou #{pontos_ate_agora} pontos."
 end
 
+def avisa_pontos_totais pontos_totais
+  puts "Você ganhou um total de #{pontos_totais} pontos." 
+end
 
 def da_boas_vindas
   puts "Bem vindo ao jogo da Forca"
@@ -35,11 +42,12 @@ def da_boas_vindas
   nome
 end
 
-def escolhe_palavra_secreta
+def avisa_escolhendo_palavra
   puts "Escolhendo uma palavra secreta"
-  palavra_secreta = "programador"
+end
+
+def avisa_palavra_escolhida palavra_secreta
   puts "Palavra secreta com #{palavra_secreta.size} letras... boa sorte!"
-  palavra_secreta
 end
 
 def nao_quer_jogar?
@@ -57,7 +65,7 @@ end
 
 
 def pede_um_chute
-  chute = gets.strip
+  chute = gets.strip.downcase
   puts "Será que acertou? Seu chute foi: #{chute}"
   chute
 end
