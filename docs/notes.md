@@ -1,4 +1,6 @@
-## Início
+## Resumo
+
+## Ruby I
 
 ###Early Return
 É uma boa prática para viabilizar o entendimento de quais condições a função trata.
@@ -23,3 +25,12 @@ Encapsular um método consiste em extrair o comportamento de um trecho de códig
 
 ###Método
 Uma função definida dentro de um escopo específico (classe) é chamado de método.
+
+## Ruby II
+
+### Refatoração
+É importante refatorar o código para deixa-lo mais simples, alguns pontos importantes para se prestar atenção:
+
+- Dar nomes que façam sentido para as variáveis, nunca deixe magic number ou strings pelo código
+- Separar o que cada parte do código vai fazer (UI, Business logic e etc...) em arquivos diferentes
+- Extrair comportamentos específicos para funções
