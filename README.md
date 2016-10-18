@@ -12,3 +12,10 @@
 - [x] Class 1
 - [x] Class 2
 - [x] Class 3
+
+###Ruby 3
+- [] Class 1
+- [] Class 2
+- [] Class 3
+- [] Class 4
+- [] Class 5
