@@ -14,7 +14,7 @@
 - [x] Class 3
 
 ###Ruby 3
-- [] Class 1
+- [x] Class 1
 - [] Class 2
 - [] Class 3
 - [] Class 4
