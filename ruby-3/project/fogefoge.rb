@@ -51,12 +51,34 @@ def posicao_valida? mapa, posicao
   true
 end
 
-def move_fantasma mapa, linha, coluna
-  posicao = [linha, coluna + 1]
-  if posicao_valida? mapa, posicao
-    mapa[linha][coluna] = " "
-    mapa[posicao[0]][posicao[1]] = "F"
+def posicoes_validas_a_partir_de mapa, posicao
+  posicoes = []
+  baixo = [posicao[0] + 1, posicao[1]]
+  if posicao_valida? mapa, baixo
+    posicoes << baixo
   end
+  direita = [posicao[0], posicao[1] + 1]
+  if posicao_valida? mapa, direita
+    posicoes << direita
+  end
+  cima = [posicao[0] - 1, posicao[1]]
+  if posicao_valida? mapa, cima
+    posicoes << cima
+  end
+  esqueda = [posicao[0], posicao[1] - 1]
+  if posicao_valida? mapa, esqueda
+    posicoes << esqueda
+  end
+  posicoes
+end
+
+def move_fantasma mapa, linha, coluna
+  posicao = posicoes_validas_a_partir_de mapa, posicao
+  return if posicoes.empty? #clause guard, early return
+
+  posicao = posicoes
+  mapa[linha][coluna] = " "
+  mapa[posicao[0]][posicao[1]] = "F"
 end
 
 def move_fantasmas mapa
