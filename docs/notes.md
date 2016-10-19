@@ -57,3 +57,5 @@ Devemos evitar de começar a refatorar um código antes de assegurar que ele est
 
 #### Duck Typing
 Duck Typing é útil por que podemos tratar objetos apenas pelo comportamento deles, sem nos preocuparmos com os tipos. Pode ser perigoso caso o comportamento seja diferente do que esperamos, por exemplo, se o resultado não for do tipo esperado.
+
+Os métodos size, [] e each são próprios de Array, mas posso utiliza-lo com uma string considerando que ele é um Array. Porém se eu tiver um método específico como o "each_wih_index" pode ser que as strings não saibam como lidar com esse tipo de comportamento. Esse tipo de erro irá só ocorrer em tempo de execução, portante o desenvolvedor, mesmo que use duck typing, tem que se preocupar com a tipagem do dado.
