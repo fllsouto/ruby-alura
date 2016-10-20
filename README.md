@@ -17,5 +17,5 @@
 - [x] Class 1
 - [x] Class 2
 - [x] Class 3
-- [] Class 4
+- [x] Class 4
 - [] Class 5
