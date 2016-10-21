@@ -40,6 +40,24 @@ def posicao_valida? mapa, posicao
   true
 end
 
+def explosão_valida? mapa, posicao
+  linhas = mapa.size
+  colunas = mapa[0].size
+  estourou_linhas = posicao[0] < 0 || posicao[0] >= linhas
+  estourou_colunas = posicao[1] < 0 || posicao[1] >= colunas
+
+  if estourou_linhas || estourou_colunas
+    return false
+  end
+
+  valor_atual = mapa[posicao[0]][posicao[1]]
+  if valor_atual == "X"
+    return false
+  end
+
+  true
+end
+
 def soma_vetor vetor1, vetor2
   [vetor1[0] + vetor2[0], vetor1[1] + vetor2[1]]
 end
@@ -81,8 +99,8 @@ def move_fantasmas mapa
       eh_fantasma = caracter_atual == caracter_do_fantasma
 
       if eh_fantasma
-        move_fantasma mapa, novo_mapa, linha, coluna
-      end
+        move_fantasma mapa, novo_mapa, linha, coluna 
+     end
     end
   end
   novo_mapa
@@ -92,17 +110,29 @@ def jogador_perdeu? mapa
   !encontra_jogador mapa
 end
 
+def executa_remocao mapa, posicao, quantidade
+  return unless explosão_valida? mapa, posicao.to_array
+  posicao.remove_do mapa
+
+  remove mapa, posicao, quantidade - 1
+rescue Exception => e
+  binding.pry
+end
+
 def remove(mapa, posicao, quantidade)
-  for direita in 1..4
-    posicao = posicao.direita
-    posicao.remove_do mapa
-  end
+  #Recursao indireta
+  return if quantidade == 0
+
+  executa_remocao mapa, posicao.direita, quantidade
+  executa_remocao mapa, posicao.cima, quantidade
+  executa_remocao mapa, posicao.esquerda, quantidade
+  executa_remocao mapa, posicao.baixo, quantidade
 end
 
 def joga(nome)
   mapa = le_mapa 3
 
-  while true
+  while true  
     desenha mapa
     direcao = pede_movimento
     heroi = encontra_jogador mapa
